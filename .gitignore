@@ -1,4 +1,6 @@
-
-db/development.sqlite3
+/node_modules
+bundle.js
+bundle.js.map
+/db/development.sqlite3
 
 *.cache

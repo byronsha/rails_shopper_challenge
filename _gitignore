@@ -10,9 +10,6 @@
 # http://github.com/RailsApps/rails-composer/issues
 #----------------------------------------------------------------------------
 
-/node_modules
-/db/development.sqlite3
-
 # bundler state
 /.bundle
 /vendor/bundle/
