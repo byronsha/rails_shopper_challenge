@@ -1,3 +1,23 @@
 #funnel {
   background: white;
+  overflow: auto;
+  height: 650px;
+  
+  ul {
+    list-style-type: none;
+    padding-left: 0px;
+    padding-bottom: 15px;
+
+    li {
+      font-size: 14px;
+    }
+  }
+
+  .bar {
+    height: 8px;
+  }
+
+  #fetch-stats-btn {
+    margin-top: 39px;
+  }
 }

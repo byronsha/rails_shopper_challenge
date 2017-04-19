@@ -1,4 +1,5 @@
 json.extract! applicant,
+  :id,
   :first_name,
   :last_name,
   :region,
@@ -11,4 +12,3 @@ json.extract! applicant,
   :workflow_state,
   :created_at,
   :updated_at
-

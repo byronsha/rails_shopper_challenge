@@ -8,7 +8,11 @@ class FunnelsController < ApplicationController
 
   def formatted_funnel(start_date, end_date)
     formatted_funnel = {}
-    funnel = Applicant.group_by_week(:updated_at, format: '%Y-%m-%d').group(:workflow_state).count
+
+    funnel = Applicant.group_by_week(:updated_at, format: '%Y-%m-%d')
+                      .group(:workflow_state)
+                      .where({ updated_at: Date.parse(start_date)..Date.parse(end_date) })
+                      .count
 
     funnel.each do |key, value|
       week = key[0]
@@ -22,6 +26,7 @@ class FunnelsController < ApplicationController
         formatted_funnel[week][workflow_state] = value
       end
     end
+
     formatted_funnel
   end
 end
