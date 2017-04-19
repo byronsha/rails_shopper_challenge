@@ -1,6 +1,6 @@
 Shopper Challenge
 =================
-##Instructions
+## Instructions
 
 1. bundle install
 2. npm install
@@ -8,13 +8,13 @@ Shopper Challenge
 4. webpack --watch
 5. visit localhost:3000
 
-##Additional technologies used
+## Additional technologies used
 
 - React, React Router
 - webpack
 - jbuilder
 
-##Notes
+## Notes
 
 I decided to implement this app using microservices architecture instead of using Rails view templates.
 
