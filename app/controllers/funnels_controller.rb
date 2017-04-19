@@ -1,42 +1,27 @@
 class FunnelsController < ApplicationController
   def index
-    start_date = params[:start_date]
-    end_date = params[:end_date]
-
-    @funnel = {}
-
-    @funnel['quiz_started'] = Applicant.where(:workflow_state => 'quiz_started').count
-    @funnel['applied'] = Applicant.where(:workflow_state => 'applied').count
-    @funnel['quiz_completed'] = Applicant.where(:workflow_state => 'quiz_completed').count
-    @funnel['onboarding_requested'] = Applicant.where(:workflow_state => 'onboarding_requested').count
-    @funnel['onboarding_completed'] = Applicant.where(:workflow_state => 'onboarding_completed').count
-    @funnel['hired'] = Applicant.where(:workflow_state => 'hired').count
-
-    # respond_to do |format|
-    #   format.html { @chart_funnel = formatted_funnel }
-    #   format.json { render json: @funnel }
-    # end
-
+    @funnel = formatted_funnel(params[:start_date], params[:end_date])
     render json: @funnel
   end
 
   private
 
-  # generates a formatted version of the funnel for display in d3
-  def formatted_funnel
-    formatted = Hash.new { |h, k| h[k] = [] }
+  def formatted_funnel(start_date, end_date)
+    formatted_funnel = {}
+    funnel = Applicant.group_by_week(:updated_at, format: '%Y-%m-%d').group(:workflow_state).count
 
-    @funnel.each do |date, state_counts|
-      state_counts.each do |state, count|
-        formatted[state] << {label: date, value: count}
+    funnel.each do |key, value|
+      week = key[0]
+      week += '-' + Date.parse(week).days_since(6).strftime('%F')
+      workflow_state = key[1]
+
+      if formatted_funnel[week].nil?
+        formatted_funnel[week] = {}
+        formatted_funnel[week][workflow_state] = value
+      else
+        formatted_funnel[week][workflow_state] = value
       end
     end
-
-    formatted.map do |k, v|
-      {
-        key: k.humanize,
-        values: v
-      }
-    end
+    formatted_funnel
   end
 end
