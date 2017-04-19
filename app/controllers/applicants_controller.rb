@@ -23,6 +23,10 @@ class ApplicantsController < ApplicationController
 
   def show
     @applicant = Applicant.find(params[:id])
+
+    return not_found if @applicant.nil?
+
+    render :show
   end
 
   private

@@ -1,11 +1,23 @@
 class FunnelsController < ApplicationController
   def index
-    @funnel = {} # your code goes here
+    start_date = params[:start_date]
+    end_date = params[:end_date]
 
-    respond_to do |format|
-      format.html { @chart_funnel = formatted_funnel }
-      format.json { render json: @funnel }
-    end
+    @funnel = {}
+
+    @funnel['quiz_started'] = Applicant.where(:workflow_state => 'quiz_started').count
+    @funnel['applied'] = Applicant.where(:workflow_state => 'applied').count
+    @funnel['quiz_completed'] = Applicant.where(:workflow_state => 'quiz_completed').count
+    @funnel['onboarding_requested'] = Applicant.where(:workflow_state => 'onboarding_requested').count
+    @funnel['onboarding_completed'] = Applicant.where(:workflow_state => 'onboarding_completed').count
+    @funnel['hired'] = Applicant.where(:workflow_state => 'hired').count
+
+    # respond_to do |format|
+    #   format.html { @chart_funnel = formatted_funnel }
+    #   format.json { render json: @funnel }
+    # end
+
+    render json: @funnel
   end
 
   private
