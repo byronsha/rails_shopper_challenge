@@ -11,11 +11,30 @@ img {
 
 main {
   @extend .container-fluid;
-  background-color: #fff;
   width: 100%;
+  padding-top: 250px;
 }
 
 section {
   @extend .row;
   margin-top: 20px;
+}
+
+textarea.form-control {
+  height: 100px;
+}
+
+h2, h3 {
+  text-align: center;
+}
+
+body {
+  background: url('grocery_store.jpg') no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.radio {
+  display: inline;
+  margin-left: 20px;
 }
