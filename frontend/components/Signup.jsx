@@ -33,7 +33,7 @@ export default class Signup extends React.Component {
     let firstName, lastName, region, phone, email, phoneType, source, reason
 
     return (
-      <div className="container" id="signup-form">
+      <div className="container" id="signup">
         <div className="row">
           <div className="col-md-6" id="perks-container">
             <Perks />
@@ -178,6 +178,7 @@ export default class Signup extends React.Component {
                           name="over-21"
                           value="yes"
                           onChange={this.handleOver21OptionChange}
+                          checked={this.state.isOver21 === 'yes'}
                         /> Yes
                       </label>
                     </div>
@@ -188,6 +189,7 @@ export default class Signup extends React.Component {
                           name="over-21"
                           value="no"
                           onChange={this.handleOver21OptionChange}
+                          checked={this.state.isOver21 === 'no'}
                         /> No
                       </label>
                     </div>

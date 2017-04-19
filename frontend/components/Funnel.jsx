@@ -44,13 +44,24 @@ export default class Funnel extends React.Component {
           onboardingRequested, onboardingCompleted, hired } = this.state
 
     return (
-      <div className="container">
-        <div>Quiz Started: {quizStarted}</div>
-        <div>Applied: {applied}</div>
-        <div>Quiz Completed: {quizCompleted}</div>
-        <div>Onboarding Requested: {onboardingRequested}</div>
-        <div>Onboarding Completed: {onboardingCompleted}</div>
-        <div>Hired: {hired}</div>
+      <div className="container" id="funnel">
+        <div className="row">
+          <div className="col-md-2">
+            <h4>Start date</h4>
+            <input type="date" className="form-control" />
+          </div>
+          <div className="col-md-2">
+            <h4>End date</h4>
+            <input type="date" className="form-control" />
+          </div>
+        </div>
+
+        <h3>Quiz Started: {quizStarted}</h3>
+        <h3>Applied: {applied}</h3>
+        <h3>Quiz Completed: {quizCompleted}</h3>
+        <h3>Onboarding Requested: {onboardingRequested}</h3>
+        <h3>Onboarding Completed: {onboardingCompleted}</h3>
+        <h3>Hired: {hired}</h3>
       </div>
     )
   }
