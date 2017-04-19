@@ -26,4 +26,10 @@ You may visit the following URLs to test the API:
 - localhost:3000/applicants/1 (GET not currently used, but left for testing)
 - localhost:3000/funnels
 
+## Todo
 
+- Form validation (React inputs are already set up with onchange handlers. I would just need to make validations inside of those handlers, and render messages.)
+- Update funnel query groups weeks from Monday-Sunday instead of Sunday-Saturday
+- Render funnel data with d3, Highcharts, etc. (I ran out of time and used HTML elements instead for now)
+- Design, responsiveness for smaller devices
+- Refactor code - separate any possible stateless functional components
